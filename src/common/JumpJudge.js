@@ -263,7 +263,7 @@ function sso(url, name, type) {
         //登录系统
         if (tdxct.tdxMobSystem == "WEB-Android" || tdxct.tdxMobSystem == "Android") {
           toCallJavaUrl('NetURL', name, jumpUrl, "", "", "");
-        } else if (tdxct.tdxMobSystem == "IOS") {
+        } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS") {
           toCallJavaUrl('NetURL', name, jumpUrl, "", "", "", "1");
         }
       } else {
@@ -303,7 +303,7 @@ function sso(url, name, type) {
         }, {
           '1227': userArr
         }];
-      } else if (tdxct.tdxMobSystem == "IOS" ) {
+      } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS" ) {
         var sendParam = [{
           tdxPageID: "_UrlEncode"
         }, {
@@ -357,7 +357,7 @@ function sso(url, name, type) {
         //登录系统
         if (tdxct.tdxMobSystem == "WEB-Android" || tdxct.tdxMobSystem == "Android") {
           toCallJavaUrl('NetURL', name, jumpUrl, "", "", "");
-        } else if (tdxct.tdxMobSystem == "IOS" ) {
+        } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS" ) {
           toCallJavaUrl('NetURL', name, jumpUrl, "", "", "", "1");
         }
       })
@@ -380,7 +380,7 @@ function sso(url, name, type) {
             if (tdxct.tdxMobSystem == "WEB-Android" || tdxct.tdxMobSystem == "Android") {
              
               toCallJavaUrl('NetURL', name, jumpUrl, "", "", "");
-            } else if (tdxct.tdxMobSystem == "IOS") {
+            } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS") {
               toCallJavaUrl('NetURL', name, jumpUrl, "", "", "", "1");
             }
           } else {
@@ -402,7 +402,7 @@ function sso(url, name, type) {
               }, {
                 '1227': userArr
               }];
-            } else if (tdxct.tdxMobSystem == "IOS") {
+            } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS") {
               var sendParam = [{
                 tdxPageID: "_UrlEncode"
               }, {
@@ -437,7 +437,7 @@ function sso(url, name, type) {
               //登录系统
               if (tdxct.tdxMobSystem == "WEB-Android" || tdxct.tdxMobSystem == "Android") {
                 toCallJavaUrl('NetURL', name, jumpUrl, "", "", "");
-              } else if (tdxct.tdxMobSystem == "IOS") {
+              } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS") {
                 toCallJavaUrl('NetURL', name, jumpUrl, "", "", "", "1");
               }
             })
@@ -468,7 +468,7 @@ function sso(url, name, type) {
           }, {
             '1227': userArr
           }];
-        } else if (tdxct.tdxMobSystem == "IOS") {
+        } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS") {
           var sendParam = [{
             tdxPageID: "_UrlEncode"
           }, {
@@ -508,7 +508,7 @@ function sso(url, name, type) {
           //登录系统
           if (tdxct.tdxMobSystem == "WEB-Android" || tdxct.tdxMobSystem == "Android") {
             toCallJavaUrl('NetURL', name, jumpUrl, "", "", "");
-          } else if (tdxct.tdxMobSystem == "IOS" ) {
+          } else if (tdxct.tdxMobSystem == "IOS"||tdxct.tdxMobSystem == "WEB-IOS" ) {
             toCallJavaUrl('NetURL', name, jumpUrl, "", "", "", "1");
           }
         })

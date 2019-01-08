@@ -1,45 +1,54 @@
 <template>
   <div id="app">
     <div id="top">
-        <ul>
-            <li class="top_li">
-              <span>基金代码</span>
-              <input type="tel" v-model="cxMsg" class="fs14 shfe" @keyup="telKeyup()" ref="jjdm">
-              <span class="check" @click="checking">查询</span>
-              <img v-show="isDelete" @click="msgDel" class="qxnr" src="../../../static/delete.png" alt="">
-            </li>
-        </ul>
+      <ul>
+        <li class="top_li">
+          <span>基金代码</span>
+          <input type="tel" v-model="cxMsg" class="fs14 shfe" @keyup="telKeyup()" ref="jjdm">
+          <span class="check" @click="checking">查询</span>
+          <img v-show="isDelete" @click="msgDel" class="qxnr" src="../../../static/delete.png" alt>
+        </li>
+      </ul>
     </div>
     <div id="content">
-        <ul class="content_title">
-            <li class="content_title_li" v-for="(data,index) in AlertTitle" :key="index">
-              <span class="content_title_li_span_1">{{data.msg}}</span>
-            </li>
-        </ul>
-        <ul class="content_ul">
-          <li class="alertmsg" v-show="isAlertMsg">请输入基金代码查询！</li>
-          <li class="content_ul_li" v-for="(data,index) in showData" :key="index" @click="Gojjxq(data)">
-              <p class="content_ul_li_p">
-                  <span class="content_ul_li_span_1">{{data.F401}}</span>
-              </p>
-              <p class="content_ul_li_p">
-                  <span class="content_ul_li_span_1">{{data.F403}}</span>
-              </p>
-              <p class="content_ul_li_p">
-                  <span class="content_ul_li_span_1">{{data.F5517}}</span>
-              </p>
-              <p class="content_ul_li_p">
-                  <span class="content_ul_li_span_1">{{data.F147}}</span>
-              </p>
-          </li>
-        </ul>
+      <ul class="content_title">
+        <li class="content_title_li" v-for="(data,index) in AlertTitle" :key="index">
+          <span class="content_title_li_span_1">{{data.msg}}</span>
+        </li>
+      </ul>
+      <ul class="content_ul">
+        <li class="alertmsg" v-show="isAlertMsg">请输入基金代码查询！</li>
+        <li
+          class="content_ul_li"
+          v-for="(data,index) in showData"
+          :key="index"
+          @click="Gojjxq(data)"
+          v-bind:style="{ height: data.first_PHeoght + 'px'}"
+        >
+          <p class="content_ul_li_p" v-bind:style="{ height: data.first_PHeoght + 'px',left:0,lineHeight:data.first_PHeoght + 'px'}">
+            <span
+              class="content_ul_li_span_1"
+            >{{data.F401}}</span>
+          </p>
+          <p class="content_ul_li_p" v-bind:style="{ height: data.first_PHeoght + 'px',left:'25%'}">
+            <span class="content_ul_li_span_1" v-bind:style="{marginTop:10 + 'px'}">{{data.F403}}</span>
+          </p>
+          <p
+            class="content_ul_li_p"
+            v-bind:style="{ height: data.first_PHeoght + 'px',lineHeight:data.first_PHeoght + 'px',left:'50%'}"
+          >
+            <span class="content_ul_li_span_1">{{data.F5517}}</span>
+          </p>
+          <p
+            class="content_ul_li_p"
+            v-bind:style="{ height: data.first_PHeoght + 'px',lineHeight:data.first_PHeoght + 'px',left:'75%'}"
+          >
+            <span class="content_ul_li_span_1">{{data.F147}}</span>
+          </p>
+        </li>
+      </ul>
     </div>
-    <AlertInfo
-      :title='title'
-      :content='content'
-      v-show="isShow_1"
-      @info-btn01='change'
-    />
+    <AlertInfo :title="title" :content="content" v-show="isShow_1" @info-btn01="change"/>
   </div>
 </template>
 
@@ -63,20 +72,20 @@ export default {
         { msg: "风险等级" },
         { msg: "状态" }
       ],
-      showData: [],//展示内容数据
-      isDelete: false,//输入框中x显示隐藏
-      cxMsg: "",//input内容
-      title: "温馨提示：",//提示弹框标题
+      showData: [], //展示内容数据
+      isDelete: false, //输入框中x显示隐藏
+      cxMsg: "", //input内容
+      title: "温馨提示：", //提示弹框标题
       content: [],
-      isShow_1: false,//弹框是否显示
-      AccInfoData: [],//账号信息内容
+      isShow_1: false, //弹框是否显示
+      AccInfoData: [], //账号信息内容
       isAlertMsg: true,
-      mobsys:''
+      mobsys: ""
     };
   },
   created() {
     this.getAccInfo();
-    this.mobsys = tdxct.tdxCheckMobSys()
+    this.mobsys = tdxct.tdxCheckMobSys();
   },
   methods: {
     telKeyup() {
@@ -98,8 +107,7 @@ export default {
     checking() {
       var __self = this;
       if (__self.$refs.jjdm.value.length === 6) {
-        __self.GetjjInfo()
-        
+        __self.GetjjInfo();
       } else {
         __self.isShow_1 = true;
         __self.content = "您输入的代码长度不符合要求，请重新输入！";
@@ -148,7 +156,8 @@ export default {
         { F113: "-1" },
         { F402: __self.$refs.jjdm.value }
       ];
-      if(__self.mobsys === 'IOS' || __self.mobsys === 'WEB-IOS') params[0].tdxPageID = '_Base64'
+      if (__self.mobsys === "IOS" || __self.mobsys === "WEB-IOS")
+        params[0].tdxPageID = "_Base64";
 
       tdxct.JYCallTql("2116", params, { Way: "qs" }, function(data) {
         var result = tdxct.FormatResult(data);
@@ -157,16 +166,37 @@ export default {
           var alldata = result.rows;
           var msgTitle = JSON.parse(alldata[0].F51).heads;
           var contentCells = JSON.parse(alldata[0].F51).cells;
-          for(var idx in contentCells){
-            contentCells[idx] = contentCells[idx][0][0]
+          for (var idx in contentCells) {
+            contentCells[idx] = contentCells[idx][0][0];
           }
-          for(var i in alldata){
+          for (var i in alldata) {
             alldata[i].heads = msgTitle;
             alldata[i].cells = contentCells;
+            if (alldata[i].F403.length <= 7) {
+              alldata[i].first_PHeoght = 46;
+            } else if (
+              alldata[i].F403.length > 7 &&
+              alldata[i].F403.length <= 14
+            ) {
+              alldata[i].first_PHeoght = 68;
+            } else if (
+              alldata[i].F403.length > 14 &&
+              alldata[i].F403.length <= 21
+            ) {
+              alldata[i].first_PHeoght = 90;
+            } else if (
+              alldata[i].F403.length > 21 &&
+              alldata[i].F403.length <= 24
+            ) {
+              alldata[i].first_PHeoght = 112;
+            }
           }
           __self.showData = alldata;
           __self.isAlertMsg = false;
-        } else if (parseInt(result.ErrorCode) === 0 &&parseInt(result.Num) === 0) {
+        } else if (
+          parseInt(result.ErrorCode) === 0 &&
+          parseInt(result.Num) === 0
+        ) {
           console.log(result);
           __self.isShow_1 = true;
           __self.content = "没有查到此基金，请检查输入的基金代码!";
@@ -176,18 +206,18 @@ export default {
         }
       });
     },
-    Gojjxq(obj){
+    Gojjxq(obj) {
       var name = obj.F403;
       console.log(name);
-      obj = JSON.stringify(obj)
-      var url = pageURL.jjxqUrl + '?data=' + '{fg}' + obj + '{fg}'
+      obj = JSON.stringify(obj);
+      var url = pageURL.jjxqUrl + "?data=" + "{fg}" + obj + "{fg}";
       tdxct.WEBCallTql(
         "tdxOpenUrl",
         {
           OpenName: name,
           OpenType: "native",
           OpenUrl: url,
-          OpenParam:jumpType
+          OpenParam: jumpType
         },
         function() {}
       );
@@ -209,12 +239,12 @@ export default {
   padding: 0;
   margin: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  -khtml-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body {
   background-color: #fff;
@@ -242,9 +272,9 @@ input {
   border: #dbdbdb 1.5px solid;
   background-color: #fff;
   outline: none;
-  -webkit-appearance:none;
+  -webkit-appearance: none;
   outline: none;
-  -webkit-user-select:text !important;/*ios上无法输入的问题*/
+  -webkit-user-select: text !important; /*ios上无法输入的问题*/
 }
 
 #top li span {
@@ -296,6 +326,7 @@ input {
 }
 .content_ul_li {
   border-bottom: 1.5px solid #f1f1f1;
+  position: relative;
 }
 .content_title_li,
 .content_ul_li_p {
@@ -307,14 +338,19 @@ input {
   position: relative;
 }
 .content_ul_li_p {
+  position: absolute;
+  top: 0;
   width: 24%;
   font-size: 14px;
 }
-.content_title_li span,
-.content_ul_li_p span {
+.content_title_li span {
   display: block;
   height: 50px;
   line-height: 50px;
+  width: 100%;
+}
+.content_ul_li_p span {
+  display: block;
   width: 100%;
 }
 .content_ul_li_span_1 {
@@ -322,7 +358,7 @@ input {
 }
 .top_li {
   position: relative;
-  -webkit-user-select:text !important;/*ios上无法输入的问题*/
+  -webkit-user-select: text !important; /*ios上无法输入的问题*/
 }
 .qxnr {
   width: 16px;
@@ -340,7 +376,7 @@ input {
   top: 20%;
   left: 50%;
   margin-left: -25%;
-  text-align:center;
+  text-align: center;
 }
 /*详情样式*/
 /* .xqcontent_ul {

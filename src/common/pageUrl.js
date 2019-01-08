@@ -1,6 +1,6 @@
-// var urlHead = 'http://10.31.23.223:8080/';
+var urlHead = 'http://10.31.23.223:8080/';
 // var urlHead = 'http://192.168.43.85:8080/';
-var urlHead = 'tdx-trade-kfsjj/';
+// var urlHead = 'tdx-trade-kfsjj/';
 
 var pageURL = {
   readptoUrl: urlHead + 'ydqrs.html',
@@ -17,16 +17,16 @@ var pageURL = {
   wdjjUrl: urlHead + 'wdjj.html',
   jjshUrl: urlHead + 'sh.html'
 }
-//远程调试类型
-//  var jumpType = {
-//   UrlType: 'Remote', // ['Remote', 'Absolute']
-//   WebViewType: 'NetURL' // ['NetURL', 'LocalURL', 'JyURL']
-//  }
- //本地类型
+// 远程调试类型
  var jumpType = {
-  UrlType: 'Absolute', // ['Remote', 'Absolute']
-  WebViewType: 'LocalURL' // ['NetURL', 'LocalURL', 'JyURL']
+  UrlType: 'Remote', // ['Remote', 'Absolute']
+  WebViewType: 'NetURL' // ['NetURL', 'LocalURL', 'JyURL']
  }
+ //本地类型
+//  var jumpType = {
+//   UrlType: 'Absolute', // ['Remote', 'Absolute']
+//   WebViewType: 'LocalURL' // ['NetURL', 'LocalURL', 'JyURL']
+//  }
 export { //添加export抛出模块
   pageURL,
   jumpType

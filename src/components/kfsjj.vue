@@ -275,8 +275,10 @@ export default {
     clickBtn04 (index) {
       /* 调用weex页面 */
       if (index !== 1) {
+        alert(111)
         this.changePage(index, this.btnFor)
       } else {
+        alert(222)
         sso('/ywbl/wande.do', '业务办理');
       }
     },

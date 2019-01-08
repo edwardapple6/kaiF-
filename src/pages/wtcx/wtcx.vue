@@ -147,7 +147,6 @@ export default {
           alldata = tempArr
           for (var i in alldata) {
             n++;
-
             var times = alldata[i].F143;
             var times_01 = [];
             times = times.split("");
